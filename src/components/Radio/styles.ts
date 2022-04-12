@@ -27,11 +27,23 @@ export const Top = styled.div`
   min-height: 50px;
 `;
 
-export const OpenButton = styled.button`
-  width: 25px;
-  height: 25px;
+export const TopButtons = styled.div`
+  display: flex;
 
-  background: red;
+  align-items: center;
+
+  gap: 20px;
+`;
+
+export const OpenButton = styled.button`
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: transparent;
 
   cursor: pointer;
 `;
