@@ -1,9 +1,15 @@
 import { useState } from "react";
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronDown,
+  ChevronUp,
+  Pencil,
+} from "lucide-react";
 
-import { Container, OpenButton, Top, TopButtons } from "./styles";
+import { Container, TopButton, Top, TopButtons } from "./styles";
 
 import Checkbox from "../Checkbox";
-import { ArrowDown, ArrowUp, ChevronDown, ChevronUp } from "lucide-react";
 
 type RadioProps = {
   name: String;
@@ -15,16 +21,19 @@ const Radio = (props: RadioProps) => {
 
   return (
     <Container isOpen={isOpen}>
-      <Top>
+      <Top onClick={() => setIsOpen(!isOpen)}>
         {props.name}
         <TopButtons>
-          <OpenButton onClick={() => setIsOpen(!isOpen)}>
+          <TopButton>
+            <Pencil color="#C4C4C4" size={20} />
+          </TopButton>
+          <TopButton onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? (
               <ChevronDown color="#C4C4C4" size={25} />
             ) : (
               <ChevronUp color="#C4C4C4" size={25} />
             )}
-          </OpenButton>
+          </TopButton>
           <Checkbox
             checked={isSelected}
             onClick={() => setIsSelected(!isSelected)}

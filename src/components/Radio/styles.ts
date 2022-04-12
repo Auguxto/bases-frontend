@@ -25,6 +25,8 @@ export const Top = styled.div`
 
   width: 100%;
   min-height: 50px;
+
+  cursor: pointer;
 `;
 
 export const TopButtons = styled.div`
@@ -32,10 +34,10 @@ export const TopButtons = styled.div`
 
   align-items: center;
 
-  gap: 20px;
+  gap: 5px;
 `;
 
-export const OpenButton = styled.button`
+export const TopButton = styled.button`
   display: flex;
 
   align-items: center;
