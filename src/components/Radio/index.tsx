@@ -1,15 +1,11 @@
-import { useState } from "react";
-import {
-  ArrowDown,
-  ArrowUp,
-  ChevronDown,
-  ChevronUp,
-  Pencil,
-} from "lucide-react";
+import { useContext, useState } from "react";
+import { ChevronDown, ChevronUp, Pencil } from "lucide-react";
 
 import { Container, TopButton, Top, TopButtons } from "./styles";
 
 import Checkbox from "../Checkbox";
+import { UserContext } from "../../context/UserContext";
+import { Navigate } from "react-router-dom";
 
 type RadioProps = {
   name: String;
@@ -18,6 +14,12 @@ type RadioProps = {
 const Radio = (props: RadioProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
+
+  const { user } = useContext(UserContext);
+
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <Container isOpen={isOpen}>

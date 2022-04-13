@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+
+import { UserContext } from "../../context/UserContext";
 
 import {
   Button,
@@ -15,18 +17,30 @@ import {
 } from "./styles";
 
 const Login = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const { handleLogin } = useContext(UserContext);
 
   return (
     <Container>
       <Form>
         <Logo />
         <Inputs>
-          <Input type="text" placeholder="Usuario" />
+          <Input
+            type="text"
+            placeholder="Usuario"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
           <InputGroup>
             <InputInGroup
               type={isPasswordVisible ? "text" : "password"}
               placeholder="Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <InputButton
               onClick={() => setIsPasswordVisible(!isPasswordVisible)}
@@ -39,7 +53,11 @@ const Login = () => {
             </InputButton>
           </InputGroup>
         </Inputs>
-        <Button>
+        <Button
+          onClick={() => {
+            handleLogin(username, password);
+          }}
+        >
           <ButtonText>Fazer login</ButtonText>
         </Button>
       </Form>
